@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">HKMDemo</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+    <string name="login_btn">登錄</string>
+    <string name="login_name">用戶名稱</string>
+    <string name="login_password">密碼</string>
+    <string name="login_failed">登錄失敗</string>
+
+    <string name="alert_exit">再點一下退出!</string>
+
+    <string name="movie_title">過去四周票房排名</string>
+    <string name="movie_name">影片名稱：</string>
+    <string name="movie_total_revenue">總票房：</string>
+    <string name="movie_open_date">開放日期：</string>
+    <string name="movie_revenue_up">總票房 \u21e7</string>
+    <string name="movie_revenue_down">總票房 \u21e9</string>
+    <string name="rank_up"> \u21e7</string>
+    <string name="rank_down"> \u21e9</string>
+
+
+</resources>

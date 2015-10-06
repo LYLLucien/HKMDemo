@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
+
+    <LinearLayout
+        android:id="@+id/layout_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.lucien.hkmdemo.widget.CleanableEditText
+            android:id="@+id/et_username"
+            android:layout_width="@dimen/dimen_200dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@drawable/edittext_bg"
+            android:drawableLeft="@drawable/ic_action_accounts_light"
+            android:drawablePadding="@dimen/dimen_5dp"
+            android:drawableRight="@drawable/btn_clean_light"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:hint="@string/login_name"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:paddingBottom="@dimen/dimen_5dp"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp"
+            android:paddingTop="@dimen/dimen_5dp"
+            android:singleLine="true"
+            android:textSize="@dimen/text_20sp" />
+
+        <com.lucien.hkmdemo.widget.CleanableEditText
+            android:id="@+id/et_password"
+            android:layout_width="@dimen/dimen_200dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@drawable/edittext_bg"
+            android:drawableLeft="@drawable/ic_action_keyboard_light"
+            android:drawablePadding="@dimen/dimen_5dp"
+            android:drawableRight="@drawable/btn_clean_light"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:hint="@string/login_password"
+            android:imeOptions="actionGo"
+            android:maxLines="1"
+            android:paddingBottom="@dimen/dimen_5dp"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp"
+            android:paddingTop="@dimen/dimen_5dp"
+            android:password="true"
+            android:singleLine="true"
+            android:textSize="@dimen/text_20sp" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="@dimen/dimen_120dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@drawable/btn_login_light"
+            android:text="@string/login_btn"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_slider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_institution_photo"
+            android:layout_width="@dimen/dimen_230dp"
+            android:layout_height="@dimen/dimen_230dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_80dp"
+            android:src="@drawable/user"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/tv_institution_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_36sp" />
+
+        <ProgressBar
+            android:id="@+id/pb_init"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_47dp"
+            android:layout_marginRight="@dimen/dimen_47dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:progressDrawable="@drawable/progress_horizontal" />
+
+
+    </LinearLayout>
+</RelativeLayout>
+
+

@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+
+android {
+    repositories {
+        mavenCentral()
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("demo.jks")
+            storePassword "123123"
+            keyAlias "lucien"
+            keyPassword "123123"
+        }
+
+        release {
+            storeFile file("demo.jks")
+            storePassword "123123"
+            keyAlias "lucien"
+            keyPassword "123123"
+        }
+    }
+
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "com.lucien.hkmdemo"
+        minSdkVersion 8
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            applicationVariants.all {
+                variant ->
+                    variant.outputs.each { output ->
+                        def file = output.outputFile
+                        def date = new Date()
+                        def formattedDate = date.format('yyyyMMddHHmm')
+                        output.outputFile = new File(
+                                file.parent,
+                                file.name.replace("app-release", "demo" + formattedDate)
+                        )
+                    }
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'de.hdodenhof:circleimageview:2.0.0'
+}

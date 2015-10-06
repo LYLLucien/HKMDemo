@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/.gitignore" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/lucien/hkmdemo/utils/https/CustomSSLSocketFactory.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/lucien/hkmdemo/utils/https/CustomX509TrustManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/lucien/hkmdemo/widget/PopupWindowMenu.java" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
