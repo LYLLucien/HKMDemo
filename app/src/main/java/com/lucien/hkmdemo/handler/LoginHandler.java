@@ -33,8 +33,7 @@ public class LoginHandler extends AsyncTask<AccountModel, Integer, Boolean> {
 
     @Override
     protected Boolean doInBackground(AccountModel... params) {
-        ApiHelper.loginAccount(api, params[0]);
-        return true;
+        return ApiHelper.loginAccount(api, params[0]);
     }
 
     @Override

@@ -28,9 +28,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private final String CLASSTAG = LoginActivity.class.getSimpleName();
 
     private Context context;
-    //    private Api api;
     private Activity activity;
-//    private DBDao dao;
 
     private LinearLayout layout_slider;
     private CircleImageView iv_institution_photo;
@@ -52,9 +50,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private void initConfig() {
         context = getApplicationContext();
         activity = this;
-//        api = new Api(this);
-//        dao = DBDao.getDBDaoInstance(this);
-//        dao.openDB();
     }
 
     public void initView() {

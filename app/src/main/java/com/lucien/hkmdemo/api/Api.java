@@ -82,42 +82,6 @@ public class Api {
         Log.v(CLASSTAG, "Api constructing");
     }
 
-    public ApiStatus loginAccount(ApiResult result, AccountModel account) {
-        Map<String, String> params = new HashMap<>();
-        params.put(ApiConstants.USERNAME, account.getUsername());
-        params.put(ApiConstants.PASSWORD, account.getPassword());
-
-//        HttpClient client = new DefaultHttpClient();
-        HttpClient client = HttpsUtils.getSSLClient();
-
-        HttpContext httpContext = new BasicHttpContext();
-        String msg = "";
-
-        try {
-            HttpPost post = new HttpPost(Config.API_URL + Config.URL_LOGIN);
-            CommonLog.i(CLASSTAG, "login url: " + Config.API_URL + Config.URL_LOGIN);
-            UrlEncodedFormEntity encodedFormEntity = new UrlEncodedFormEntity(generatePostContent(params));
-            post.setEntity(encodedFormEntity);
-            HttpResponse response = client.execute(new HttpHost(Config.API_HOST), post, httpContext);
-            HttpEntity httpEntity = response.getEntity();
-            if (httpEntity != null) {
-                msg = EntityUtils.toString(httpEntity);
-            }
-
-            if (!TextUtils.isEmpty(msg) && !msg.contains("Fatal error")) {
-                result.setState(0);
-                result.setMsg(msg);
-            } else {
-                System.out.println("msg: " + msg.toString());
-                return ApiStatus.Connection_Error;
-            }
-        } catch (Throwable e) {
-            e.printStackTrace();
-            return ApiStatus.General_Error;
-        }
-        return ApiStatus.Success;
-    }
-
     public ApiStatus httpsLogin(ApiResult result, AccountModel account) {
         Map<String, String> params = new HashMap<>();
         params.put(ApiConstants.USERNAME, account.getUsername());
@@ -128,50 +92,17 @@ public class Api {
         String msg = "";
 
         try {
-//            URL url = new URL(Config.API_URL + Config.URL_LOGIN);
-//            HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-//            connection.setRequestMethod("POST");
-//           // connection.setRequestProperty("USER-AGENT", "runscope/0.1");
-//            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-//           // connection.setRequestProperty("Accept-Encoding", "gzip, deflate");
-//
-//            connection.setDoOutput(true);
-//            DataOutputStream dStream = new DataOutputStream(connection.getOutputStream());
-//            dStream.writeBytes("username=hkm&password=123");
-//            dStream.flush();
-//            dStream.close();
-//
-//            int responseCode = connection.getResponseCode();
-//            System.out.println("responseCode: " + responseCode);
             HttpPost post = new HttpPost(Config.API_URL + Config.URL_LOGIN);
-            post.addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-           // post.addHeader("Content-Type", "application/json; charset=UTF-8");
-            //post.addHeader("Host", Config.API_HOST);
+            post.addHeader("Accept", "application/json");
 
             CommonLog.i(CLASSTAG, "login url: " + Config.API_URL + Config.URL_LOGIN);
             UrlEncodedFormEntity encodedFormEntity = new UrlEncodedFormEntity(generatePostContent(params), HTTP.UTF_8);
             post.setEntity(encodedFormEntity);
-            //HttpResponse response = sslClient.execute(new HttpHost(Config.API_HOST), post, httpContext);
             HttpResponse response = sslClient.execute(post);
-            BufferedReader r = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-
-            StringBuilder total = new StringBuilder();
-
-            String line = null;
-
-            while ((line = r.readLine()) != null) {
-                total.append(line);
+            HttpEntity httpEntity = response.getEntity();
+            if (httpEntity != null) {
+                msg = EntityUtils.toString(httpEntity);
             }
-            CommonLog.i(CLASSTAG, "msg: " + total.toString());
-////        HttpResponse response;
-//
-//        try {
-//            response = request(Config.API_URL + Config.URL_LOGIN, account);
-//            HttpEntity httpEntity = response.getEntity();
-//            if (httpEntity != null) {
-//                msg = EntityUtils.toString(httpEntity);
-//            }
-//            CommonLog.i(CLASSTAG, "msg: " + msg);
 
             if (!TextUtils.isEmpty(msg) && !msg.contains("Fatal error")) {
                 result.setState(0);
@@ -185,20 +116,6 @@ public class Api {
         }
 
         return ApiStatus.Success;
-    }
-
-    public HttpResponse request(String url, AccountModel account)
-            throws IOException, IllegalStateException {
-        Map<String, String> params = new HashMap<>();
-        params.put(ApiConstants.USERNAME, account.getUsername());
-        params.put(ApiConstants.PASSWORD, account.getPassword());
-        DefaultHttpClient client = (DefaultHttpClient) HttpsUtils.getNewHttpClient();
-
-        HttpPost post = new HttpPost(url);
-        UrlEncodedFormEntity encodedFormEntity = new UrlEncodedFormEntity(generatePostContent(params), HTTP.UTF_8);
-        post.setEntity(encodedFormEntity);
-        HttpResponse response = client.execute(post);
-        return response;
     }
 
     public ApiStatus getHttpsMovies(ApiResult result) {

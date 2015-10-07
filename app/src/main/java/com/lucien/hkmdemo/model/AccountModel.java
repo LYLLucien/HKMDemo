@@ -40,23 +40,23 @@ public class AccountModel {
     }
 
     public class LoginStatus {
-        private String success;
-        private String error;
+        private int success;
+        private int error;
 
-        public String getSuccess() {
+        public int getSuccess() {
             return success;
         }
 
-        public void setSuccess(String success) {
+        public void setSuccess(int success) {
             this.success = success;
             setStatus(true);
         }
 
-        public String getError() {
+        public int getError() {
             return error;
         }
 
-        public void setError(String error) {
+        public void setError(int error) {
             this.error = error;
             setStatus(false);
         }

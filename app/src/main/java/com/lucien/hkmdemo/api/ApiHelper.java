@@ -30,13 +30,13 @@ public class ApiHelper {
     public static boolean loginAccount(Api api, AccountModel loginAccount) {
         ApiResult result = new ApiResult();
         if (api.httpsLogin(result, loginAccount) == ApiStatus.Success) {
-            System.out.println("result.getMsg(): " + result.getMsg());
+            CommonLog.i("result.getMsg(): " + result.getMsg());
 
             AccountModel.LoginStatus status = (LoginStatus) JsonUtils.parseJson(result.getMsg(), LoginStatus.class);
-            System.out.println("status success: " + status.getSuccess());
-            System.out.println("status error: " + status.getError());
-
-            return true;
+            if (status.getSuccess() == 1) {
+                return true;
+            }
+            return false;
         }
         CommonLog.e("login error!");
         return false;
